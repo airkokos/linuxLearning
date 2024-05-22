@@ -1,0 +1,73 @@
+
+
+UserA:passwd@1234A:1200:1200:Test:/home/UserA:/bin/bash
+UserB:passwd@1234B:1300:1300:Test:/home/UserB:/bin/bash
+UserC:passwd@1234C:1400:1400:Test:/home/UserC:/bin/bash
+UserD:passwd@1234D:1500:1500:Test:/home/UserD:/bin/bash
+
+
+
+
+#!/bin/bash
+
+read -p "Enter number of Users to create:" num 
+echo "----------------------------------------------------------"
+for (( i=1; i<=$num; i=i+1 )); do
+read -p "Enter Username no.$i: " uname
+sudo useradd $uname 
+read -p "Enter password for user no.$i? [Y/N] " flag
+if [[ "$flag" == "Y" || "$flag" == "y" ]]; then 
+sudo passwd $uname
+echo "Succsesfully create New User: $uname with password."
+echo "----------------------------------------------------------"
+else
+echo "Succsesfully create New User: $uname without password."
+echo "----------------------------------------------------------"
+fi
+done
+
+
+source_directory="/scripts/MyDirectory/data3"
+backup_directory="/scripts/BackupDocs"
+create_directory="rsync -r $source_directory $backup_directory"
+
+[ -f $source_directory ] && echo "File exists" || echo "File does not exists"
+
+
+rsync -r /scripts/MyDirectory/data2 /scripts/BackupDocs/
+
+data2='/scripts/MyDirectory/data2'
+
+
+
+ if [ -d "$data2" ];
+then
+        echo "$data2 exists and is a directory."
+    else
+        echo "$data2 does not exist, or is not a directory."
+    fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
